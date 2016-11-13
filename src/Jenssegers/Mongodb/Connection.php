@@ -41,6 +41,8 @@ class Connection extends \Illuminate\Database\Connection
 
         $this->useDefaultPostProcessor();
 
+        $this->useDefaultQueryGrammar();
+
         $this->useDefaultSchemaGrammar();
     }
 
@@ -205,6 +207,11 @@ class Connection extends \Illuminate\Database\Connection
     public function getDriverName()
     {
         return 'mongodb';
+    }
+
+    protected function getDefaultQueryGrammar()
+    {
+        return new Query\Grammar;
     }
 
     /**
